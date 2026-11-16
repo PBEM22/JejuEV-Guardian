@@ -158,6 +158,25 @@ _HUB_RENAME: dict[int, dict[str, str]] = {
 _CHARGER_TYPE_MAP = {"01": "급속", "02": "완속", "1": "급속", "2": "완속",
                      "급속": "급속", "완속": "완속", "fast": "급속", "slow": "완속"}
 
+# 요일 → 한글 (API가 숫자 0-6 또는 영문으로 올 때 대비)
+# 숫자는 Python weekday() 기준 0-based(0=월)로 처리 — risk.py parse_weekday()와 동일 기준
+_WEEKDAY_MAP: dict[str, str] = {
+    "0": "월", "1": "화", "2": "수", "3": "목", "4": "금", "5": "토", "6": "일",
+    "mon": "월", "tue": "화", "wed": "수", "thu": "목", "fri": "금", "sat": "토", "sun": "일",
+    "monday": "월", "tuesday": "화", "wednesday": "수", "thursday": "목",
+    "friday": "금", "saturday": "토", "sunday": "일",
+    "월": "월", "화": "화", "수": "수", "목": "목", "금": "금", "토": "토", "일": "일",
+}
+
+
+def _to_yyyymmdd(val) -> int | float:
+    """'2026-11-16', '2026/11/16', '20261116', 20261116 → 20261116 정수. 변환 불가 시 NaN."""
+    s = str(val).strip().replace("-", "").replace("/", "")
+    try:
+        return int(s)
+    except ValueError:
+        return float("nan")
+
 
 def hub_api_available() -> bool:
     return bool(env("JEJU_HUB_API_KEY")) and env("JEJU_USE_LIVE_API", "0") == "1"
@@ -166,7 +185,6 @@ def hub_api_available() -> bool:
 def _normalize_hub(df: pd.DataFrame, dataset_id: int) -> pd.DataFrame:
     """허브 API 응답 컬럼명을 표준 필드명으로 정규화한다."""
     rename = _HUB_RENAME.get(dataset_id, {})
-    # 소문자 비교로 대소문자 무관 매핑
     lower_map = {k.lower(): v for k, v in rename.items()}
     actual_rename = {c: lower_map[c.lower()] for c in df.columns if c.lower() in lower_map}
     df = df.rename(columns=actual_rename)
@@ -174,9 +192,14 @@ def _normalize_hub(df: pd.DataFrame, dataset_id: int) -> pd.DataFrame:
     if "charger_type" in df.columns:
         df["charger_type"] = df["charger_type"].map(
             lambda x: _CHARGER_TYPE_MAP.get(str(x).strip(), x))
-    # base_date 숫자형 보장
+    # base_date: "2026-11-16" / "20261116" / 정수 모두 → 20261116 정수
     if "base_date" in df.columns:
+        df["base_date"] = df["base_date"].map(_to_yyyymmdd)
         df["base_date"] = pd.to_numeric(df["base_date"], errors="coerce").astype("Int64")
+    # weekday: 숫자(0-6, 1-7) · 영문 → 한글
+    if "weekday" in df.columns:
+        df["weekday"] = df["weekday"].map(
+            lambda x: _WEEKDAY_MAP.get(str(x).strip().lower(), str(x).strip()))
     return df
 
 
