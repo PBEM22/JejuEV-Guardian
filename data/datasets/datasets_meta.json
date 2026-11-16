@@ -1,0 +1,12 @@
+{
+ "generated_at": "2026-11-16T11:36:56",
+ "seed": 20261116,
+ "weather": {
+  "file": "daily_weather.csv",
+  "rows": 2098,
+  "source": "Open-Meteo Historical Weather API (ERA5 재분석, ECMWF/Copernicus) · 제주시·서귀포시 지점",
+  "license": "CC BY 4.0",
+  "retrieved": "2026-11-16",
+  "note": "이 파일만 실측 공개 데이터이며, 나머지는 센터/허브 스키마를 따른 합성 검증 데이터입니다."
+ }
+}

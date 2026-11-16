@@ -1,0 +1,11 @@
+# JejuEV Guardian — 실행 환경
+# Python 3.10+ / Windows·macOS·Linux
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+streamlit>=1.30
+reportlab>=4.0
+pillow>=10.0
+
+# 선택: 산점도 라벨 자동 배치(없어도 동작)
+# adjustText>=1.1

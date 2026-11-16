@@ -1,0 +1,388 @@
+[
+  {
+    "name": "ev_demand_agent",
+    "display_name": "충전·유입 분석 Agent",
+    "role": "지역·요일·시간대별 충전 대기 리스크 산출 및 후보 충전소 우선순위 제시",
+    "version": "1.0.0",
+    "capabilities": [
+      "wait_risk_ranking",
+      "hourly_risk_curve",
+      "avoid_window",
+      "reroute_with_exclusion"
+    ],
+    "input_schema": {
+      "type": "object",
+      "required": [
+        "region",
+        "date",
+        "hour"
+      ],
+      "properties": {
+        "region": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "hour": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "charger_type": {
+          "type": "string",
+          "enum": [
+            "급속",
+            "완속"
+          ]
+        },
+        "top_k": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "exclude_stations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rework_reason": {
+          "type": "string"
+        }
+      }
+    },
+    "output_schema": {
+      "type": "object",
+      "required": [
+        "emd_name",
+        "candidates",
+        "wait_min",
+        "avoid_windows"
+      ],
+      "properties": {
+        "emd_name": {
+          "type": "string"
+        },
+        "candidates": {
+          "type": "array"
+        },
+        "wait_min": {
+          "type": "number"
+        },
+        "avoid_windows": {
+          "type": "array"
+        }
+      }
+    },
+    "data_sources": [
+      {
+        "dataset": "[494] 전기자동차 충전소 정보",
+        "dataset_id": 494,
+        "as_of": "2025-09-18",
+        "granularity": "충전소×충전기유형",
+        "source": "제주데이터허브 Open API",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      },
+      {
+        "dataset": "[140] 요일별 전기자동차 대기 시간",
+        "dataset_id": 140,
+        "as_of": "2022-10-31",
+        "granularity": "읍면동×요일×시간×충전기유형",
+        "source": "제주데이터허브 Open API",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      },
+      {
+        "dataset": "[136] 일별 전기자동차 충전 이력",
+        "dataset_id": 136,
+        "as_of": "2022-06-30",
+        "granularity": "일×읍면동×충전기유형",
+        "source": "제주데이터허브 Open API",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      },
+      {
+        "dataset": "[512] 제주특별자치도 전기자동차 보급 현황",
+        "dataset_id": 512,
+        "as_of": "2024-12-31",
+        "granularity": "연×읍면동×차종",
+        "source": "제주데이터허브 파일데이터",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      },
+      {
+        "dataset": "[745] 관광지별 내·외국인 유입자 수",
+        "dataset_id": 745,
+        "as_of": "2024-12-31",
+        "granularity": "월×관광지",
+        "source": "제주데이터허브 Open API(745·746)",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      }
+    ],
+    "constraints": {
+      "model": "pattern(2022)×level(2024~2025)×weather(실시간)",
+      "max_candidates": 20,
+      "deterministic": true
+    }
+  },
+  {
+    "name": "weather_safety_agent",
+    "display_name": "기상·안전 검증 Agent",
+    "role": "대상일 기상과 교통사고 다발지역으로 후보 충전소의 안전성을 교차 검증하고, 위험 시 재탐색을 요청",
+    "version": "1.0.0",
+    "capabilities": [
+      "weather_lookup",
+      "accident_proximity_check",
+      "reroute_decision"
+    ],
+    "input_schema": {
+      "type": "object",
+      "required": [
+        "region",
+        "date",
+        "hour",
+        "candidates"
+      ],
+      "properties": {
+        "region": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "hour": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "candidates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "station_id",
+              "station_name",
+              "emd_name",
+              "wait_min"
+            ],
+            "properties": {
+              "station_id": {
+                "type": "string"
+              },
+              "station_name": {
+                "type": "string"
+              },
+              "emd_name": {
+                "type": "string"
+              },
+              "wait_min": {
+                "type": "number"
+              },
+              "parking_type": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "check_top_n": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        }
+      }
+    },
+    "output_schema": {
+      "type": "object",
+      "required": [
+        "flags",
+        "weather",
+        "verdict"
+      ],
+      "properties": {
+        "flags": {
+          "type": "array"
+        },
+        "weather": {
+          "type": "object"
+        },
+        "verdict": {
+          "type": "string"
+        }
+      }
+    },
+    "data_sources": [
+      {
+        "dataset": "[756] 일별 기상 정보",
+        "dataset_id": 756,
+        "as_of": "실시간(Open-Meteo 재분석)",
+        "granularity": "일×관측소",
+        "source": "제주데이터허브 Open API(756) + Open-Meteo ERA5",
+        "synthetic": false,
+        "license": "CC BY 4.0 (Open-Meteo/ERA5)"
+      },
+      {
+        "dataset": "[493] 교통사고 다발지역 정보",
+        "dataset_id": 493,
+        "as_of": "2023-12-31",
+        "granularity": "다발지역",
+        "source": "제주데이터허브 Open API",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      }
+    ],
+    "constraints": {
+      "flag_threshold": 0.6,
+      "check_top_n_default": 5
+    }
+  },
+  {
+    "name": "concierge_report_agent",
+    "display_name": "도민 안내·리포트 Agent",
+    "role": "분석·검증 결과를 도민용 추천(TOP3·회피 시간대·주의사항)과 차트·리포트로 종합",
+    "version": "1.0.0",
+    "capabilities": [
+      "recommendation",
+      "chart_generation",
+      "markdown_report",
+      "pdf_report"
+    ],
+    "input_schema": {
+      "type": "object",
+      "required": [
+        "region",
+        "date",
+        "hour",
+        "demand",
+        "safety"
+      ],
+      "properties": {
+        "region": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "hour": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23
+        },
+        "charger_type": {
+          "type": "string"
+        },
+        "demand": {
+          "type": "object"
+        },
+        "safety": {
+          "type": "object"
+        },
+        "previous_candidates": {
+          "type": "array"
+        },
+        "rerouted": {
+          "type": "boolean"
+        },
+        "excluded_records": {
+          "type": "array"
+        },
+        "excluded_total": {
+          "type": "integer"
+        },
+        "user_query": {
+          "type": "string"
+        },
+        "a2a_markdown": {
+          "type": "string"
+        },
+        "engine": {
+          "type": "string"
+        },
+        "out_dir": {
+          "type": "string"
+        }
+      }
+    },
+    "output_schema": {
+      "type": "object",
+      "required": [
+        "top3",
+        "report_path"
+      ],
+      "properties": {
+        "top3": {
+          "type": "array"
+        },
+        "report_path": {
+          "type": "string"
+        }
+      }
+    },
+    "data_sources": [
+      {
+        "dataset": "[494] 전기자동차 충전소 정보",
+        "dataset_id": 494,
+        "as_of": "2025-09-18",
+        "granularity": "충전소×충전기유형",
+        "source": "제주데이터허브 Open API",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      },
+      {
+        "dataset": "[140] 요일별 전기자동차 대기 시간",
+        "dataset_id": 140,
+        "as_of": "2022-10-31",
+        "granularity": "읍면동×요일×시간×충전기유형",
+        "source": "제주데이터허브 Open API",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      },
+      {
+        "dataset": "[512] 제주특별자치도 전기자동차 보급 현황",
+        "dataset_id": 512,
+        "as_of": "2024-12-31",
+        "granularity": "연×읍면동×차종",
+        "source": "제주데이터허브 파일데이터",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      },
+      {
+        "dataset": "[745] 관광지별 내·외국인 유입자 수",
+        "dataset_id": 745,
+        "as_of": "2024-12-31",
+        "granularity": "월×관광지",
+        "source": "제주데이터허브 Open API(745·746)",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      },
+      {
+        "dataset": "[756] 일별 기상 정보",
+        "dataset_id": 756,
+        "as_of": "실시간(Open-Meteo 재분석)",
+        "granularity": "일×관측소",
+        "source": "제주데이터허브 Open API(756) + Open-Meteo ERA5",
+        "synthetic": false,
+        "license": "CC BY 4.0 (Open-Meteo/ERA5)"
+      },
+      {
+        "dataset": "[493] 교통사고 다발지역 정보",
+        "dataset_id": 493,
+        "as_of": "2023-12-31",
+        "granularity": "다발지역",
+        "source": "제주데이터허브 Open API",
+        "synthetic": true,
+        "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)"
+      }
+    ],
+    "constraints": {
+      "max_recommendation": 3,
+      "language": "ko"
+    }
+  }
+]

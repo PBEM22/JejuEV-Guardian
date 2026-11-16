@@ -1,0 +1,2126 @@
+{
+ "query": "비 오는 주말에 서귀포 중문에서 안전하게 충전할 곳 찾아줘",
+ "parsed": {
+  "region": "중문동",
+  "date": "2026-11-14",
+  "hour": 13,
+  "charger_type": "급속",
+  "date_basis": "가장 가까운 금요일(기본값)",
+  "notes": [
+   "시간대가 없어 퇴근 시간대(18시)를 기본값으로 사용했습니다."
+  ],
+  "raw": "비 오는 주말에 서귀포 중문에서 안전하게 충전할 곳 찾아줘"
+ },
+ "engine": "zerokey",
+ "engine_label": "Zero-Key 내장 스마트 엔진 (API 키 불필요)",
+ "artifacts": [
+  {
+   "request": {
+    "from_agent": "orchestrator",
+    "to_agent": "ev_demand_agent",
+    "intent": "charging_wait_risk",
+    "payload": {
+     "region": "중문동",
+     "date": "2026-11-14",
+     "hour": 13,
+     "charger_type": "급속",
+     "top_k": 6
+    },
+    "constraints": {
+     "max_latency_ms": 4000
+    },
+    "context": {
+     "user_query": "비 오는 주말에 서귀포 중문에서 안전하게 충전할 곳 찾아줘"
+    },
+    "task_id": "task-849388f7af",
+    "message_id": "req-60ef8cdc9e",
+    "hop": 1,
+    "reply_to": null,
+    "created_at": "2026-11-16T13:18:20.483"
+   },
+   "artifact": {
+    "from_agent": "ev_demand_agent",
+    "to_agent": "orchestrator",
+    "task_id": "task-849388f7af",
+    "status": "ok",
+    "summary": "중문동 2026-11-14(토) 13시 급속 기준 지역 평균 예상 대기 44.1분, 최적 후보 '중문면세점' 40.0분",
+    "data": {
+     "emd_name": "중문동",
+     "nearby_regions": [],
+     "city_name": "서귀포시",
+     "region_kind": "관광지",
+     "weekday": "토",
+     "date": "2026-11-14",
+     "hour": 13,
+     "charger_type": "급속",
+     "wait_min": 44.1,
+     "wait_base_min": 30.1,
+     "p90_min": 90.39,
+     "growth_factor": 1.25,
+     "tour_factor": 0.94,
+     "weather_factor": 1.25,
+     "pressure": {
+      "ev_per_charger": 27.55,
+      "chargers_now": 119,
+      "ev_2024": 3278,
+      "tourist_load": 18046.3
+     },
+     "candidates": [
+      {
+       "station_id": "JEJU-490035",
+       "station_name": "중문면세점",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "에버온",
+       "parking_type": "실내",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.41,
+       "wait_min": 40.0,
+       "p90_min": 86.9,
+       "risk_score": 56.3,
+       "risk_level": "보통",
+       "c_wait": 0.5,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 40.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+       ]
+      },
+      {
+       "station_id": "JEJU-490034",
+       "station_name": "여미지식물원",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 10,
+       "connector_type": "CCS1",
+       "operator": "한국전력공사",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 59.3,
+       "p90_min": 94.4,
+       "risk_score": 69.5,
+       "risk_level": "보통",
+       "c_wait": 0.74,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490033",
+       "station_name": "중문색달해수욕장",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 8,
+       "connector_type": "CCS1",
+       "operator": "제주특별자치도",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "09:00-18:00",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 64.0,
+       "p90_min": 104.3,
+       "risk_score": 72.8,
+       "risk_level": "높음",
+       "c_wait": 0.8,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490032",
+       "station_name": "중문관광단지",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "테슬라",
+       "parking_type": "야외",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "점검중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 91.6,
+       "p90_min": 86.9,
+       "risk_score": 83.8,
+       "risk_level": "높음",
+       "c_wait": 1.0,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출",
+        "점검중 상태(가용성 낮음)"
+       ]
+      }
+     ],
+     "fallback": [],
+     "excluded_applied": [],
+     "avoid_windows": [
+      {
+       "hour": 18,
+       "window": "18:00-19:00",
+       "wait_min": 51.3
+      },
+      {
+       "hour": 14,
+       "window": "14:00-15:00",
+       "wait_min": 50.0
+      },
+      {
+       "hour": 15,
+       "window": "15:00-16:00",
+       "wait_min": 48.9
+      }
+     ],
+     "hourly_curve": [
+      {
+       "hour": 0,
+       "wait_min": 5.71,
+       "p90_min": 13.48
+      },
+      {
+       "hour": 1,
+       "wait_min": 6.59,
+       "p90_min": 13.62
+      },
+      {
+       "hour": 2,
+       "wait_min": 6.89,
+       "p90_min": 14.94
+      },
+      {
+       "hour": 3,
+       "wait_min": 5.42,
+       "p90_min": 12.6
+      },
+      {
+       "hour": 4,
+       "wait_min": 8.64,
+       "p90_min": 17.43
+      },
+      {
+       "hour": 5,
+       "wait_min": 5.86,
+       "p90_min": 12.6
+      },
+      {
+       "hour": 6,
+       "wait_min": 6.45,
+       "p90_min": 14.06
+      },
+      {
+       "hour": 7,
+       "wait_min": 15.82,
+       "p90_min": 32.38
+      },
+      {
+       "hour": 8,
+       "wait_min": 16.55,
+       "p90_min": 34.87
+      },
+      {
+       "hour": 9,
+       "wait_min": 19.63,
+       "p90_min": 47.03
+      },
+      {
+       "hour": 10,
+       "wait_min": 32.82,
+       "p90_min": 68.12
+      },
+      {
+       "hour": 11,
+       "wait_min": 28.71,
+       "p90_min": 69.73
+      },
+      {
+       "hour": 12,
+       "wait_min": 47.91,
+       "p90_min": 99.18
+      },
+      {
+       "hour": 13,
+       "wait_min": 44.1,
+       "p90_min": 90.39
+      },
+      {
+       "hour": 14,
+       "wait_min": 49.96,
+       "p90_min": 100.79
+      },
+      {
+       "hour": 15,
+       "wait_min": 48.93,
+       "p90_min": 118.23
+      },
+      {
+       "hour": 16,
+       "wait_min": 28.57,
+       "p90_min": 66.8
+      },
+      {
+       "hour": 17,
+       "wait_min": 45.56,
+       "p90_min": 94.2
+      },
+      {
+       "hour": 18,
+       "wait_min": 51.27,
+       "p90_min": 115.59
+      },
+      {
+       "hour": 19,
+       "wait_min": 24.03,
+       "p90_min": 56.26
+      },
+      {
+       "hour": 20,
+       "wait_min": 24.32,
+       "p90_min": 58.01
+      },
+      {
+       "hour": 21,
+       "wait_min": 16.85,
+       "p90_min": 39.55
+      },
+      {
+       "hour": 22,
+       "wait_min": 14.21,
+       "p90_min": 31.2
+      },
+      {
+       "hour": 23,
+       "wait_min": 12.75,
+       "p90_min": 30.18
+      }
+     ],
+     "trend_note": "10~16시 구간에서 대기가 감소하는 흐름(32.8분 → 28.6분)",
+     "weather": {
+      "date": "2026-11-14",
+      "region": "서귀포시",
+      "avg_temp": 18.0,
+      "max_temp": 19.2,
+      "min_temp": 17.0,
+      "rainfall_mm": 39.0,
+      "wind_ms": 4.4,
+      "source": "내장 실측 기상(2024-01~현재)",
+      "as_of": "실시간(Open-Meteo 재분석)"
+     }
+    },
+    "evidence": [
+     {
+      "dataset": "[140] 요일별 전기자동차 대기 시간",
+      "dataset_id": 140,
+      "as_of": "2022-10-31",
+      "granularity": "읍면동×요일×시간×충전기유형",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "요일·시간대 대기 패턴(형태)"
+     },
+     {
+      "dataset": "[494] 전기자동차 충전소 정보",
+      "dataset_id": 494,
+      "as_of": "2025-09-18",
+      "granularity": "충전소×충전기유형",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "현재 충전기 수·설치연도·충전소 속성"
+     },
+     {
+      "dataset": "[512] 제주특별자치도 전기자동차 보급 현황",
+      "dataset_id": 512,
+      "as_of": "2024-12-31",
+      "granularity": "연×읍면동×차종",
+      "source": "제주데이터허브 파일데이터",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "읍면동별 EV 등록대수(공급 압력)"
+     },
+     {
+      "dataset": "[745] 관광지별 내·외국인 유입자 수",
+      "dataset_id": 745,
+      "as_of": "2024-12-31",
+      "granularity": "월×관광지",
+      "source": "제주데이터허브 Open API(745·746)",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "월별 관광 유입(계절 계수)"
+     },
+     {
+      "dataset": "[136] 일별 전기자동차 충전 이력",
+      "dataset_id": 136,
+      "as_of": "2022-06-30",
+      "granularity": "일×읍면동×충전기유형",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "과거 충전 수요 추세(교차 확인)"
+     }
+    ],
+    "method": "예상대기 = 과거(2022) 요일×시간 대기 패턴 × (현재 EV/충전기 ÷ 2022 EV/충전기) × 월별 관광 계절계수 × 기상 보정계수. 리스크 = 0.55·대기 + 0.20·공급압력 + 0.15·관광부하 + 0.10·안전",
+    "confidence": 0.74,
+    "warnings": [
+     "대기 패턴 기준일 2022-10-31 → 대상일 2026-11-14 (약 4.0년 차, 수준은 최신 EV·충전기로 보정)"
+    ],
+    "next_action": {
+     "type": "handoff",
+     "to_agent": "weather_safety_agent",
+     "reason": "후보 충전소의 기상·사고다발지역 안전성 교차 검증"
+    },
+    "message_id": "art-5282673fd4",
+    "hop": 1,
+    "reply_to": "req-60ef8cdc9e",
+    "created_at": "2026-11-16T13:18:20.654",
+    "latency_ms": 170,
+    "validation": {
+     "ok": true,
+     "errors": []
+    }
+   }
+  },
+  {
+   "request": {
+    "from_agent": "orchestrator",
+    "to_agent": "weather_safety_agent",
+    "intent": "safety_weather_check",
+    "payload": {
+     "region": "중문동",
+     "date": "2026-11-14",
+     "hour": 13,
+     "candidates": [
+      {
+       "station_id": "JEJU-490035",
+       "station_name": "중문면세점",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "에버온",
+       "parking_type": "실내",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.41,
+       "wait_min": 40.0,
+       "p90_min": 86.9,
+       "risk_score": 56.3,
+       "risk_level": "보통",
+       "c_wait": 0.5,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 40.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+       ]
+      },
+      {
+       "station_id": "JEJU-490034",
+       "station_name": "여미지식물원",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 10,
+       "connector_type": "CCS1",
+       "operator": "한국전력공사",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 59.3,
+       "p90_min": 94.4,
+       "risk_score": 69.5,
+       "risk_level": "보통",
+       "c_wait": 0.74,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490033",
+       "station_name": "중문색달해수욕장",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 8,
+       "connector_type": "CCS1",
+       "operator": "제주특별자치도",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "09:00-18:00",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 64.0,
+       "p90_min": 104.3,
+       "risk_score": 72.8,
+       "risk_level": "높음",
+       "c_wait": 0.8,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490032",
+       "station_name": "중문관광단지",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "테슬라",
+       "parking_type": "야외",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "점검중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 91.6,
+       "p90_min": 86.9,
+       "risk_score": 83.8,
+       "risk_level": "높음",
+       "c_wait": 1.0,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출",
+        "점검중 상태(가용성 낮음)"
+       ]
+      }
+     ],
+     "check_top_n": 5
+    },
+    "constraints": {},
+    "context": {
+     "task": "task-849388f7af",
+     "attempt": 0
+    },
+    "task_id": "task-c322575c3a",
+    "message_id": "req-de6403a065",
+    "hop": 2,
+    "reply_to": null,
+    "created_at": "2026-11-16T13:18:20.654"
+   },
+   "artifact": {
+    "from_agent": "weather_safety_agent",
+    "to_agent": "orchestrator",
+    "task_id": "task-c322575c3a",
+    "status": "rework_request",
+    "summary": "2026-11-14 서귀포시 기상: 강수 39.0mm·최대풍속 4.4m/s·평균 18.0°C → 후보 5곳 중 위험 3곳, 판정 '재탐색 필요'",
+    "data": {
+     "verdict": "재탐색 필요",
+     "checked": 5,
+     "flagged_count": 3,
+     "flagged": [
+      {
+       "station_id": "JEJU-490034",
+       "station_name": "여미지식물원",
+       "severity": 0.75,
+       "reasons": [
+        "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490033",
+       "station_name": "중문색달해수욕장",
+       "severity": 0.75,
+       "reasons": [
+        "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490032",
+       "station_name": "중문관광단지",
+       "severity": 0.75,
+       "reasons": [
+        "예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출",
+        "점검중 상태(가용성 낮음)"
+       ]
+      }
+     ],
+     "flags": [
+      {
+       "station_id": "JEJU-490035",
+       "station_name": "중문면세점",
+       "severity": 0.0,
+       "flagged": false,
+       "reasons": [
+        "예상 대기 40.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+       ]
+      },
+      {
+       "station_id": "JEJU-490034",
+       "station_name": "여미지식물원",
+       "severity": 0.75,
+       "flagged": true,
+       "reasons": [
+        "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490033",
+       "station_name": "중문색달해수욕장",
+       "severity": 0.75,
+       "flagged": true,
+       "reasons": [
+        "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490032",
+       "station_name": "중문관광단지",
+       "severity": 0.75,
+       "flagged": true,
+       "reasons": [
+        "예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출",
+        "점검중 상태(가용성 낮음)"
+       ]
+      }
+     ],
+     "weather": {
+      "date": "2026-11-14",
+      "region": "서귀포시",
+      "avg_temp": 18.0,
+      "max_temp": 19.2,
+      "min_temp": 17.0,
+      "rainfall_mm": 39.0,
+      "wind_ms": 4.4,
+      "source": "내장 실측 기상(2024-01~현재)",
+      "as_of": "실시간(Open-Meteo 재분석)"
+     },
+     "alerts": [
+      "호우 경보 수준(39.0mm) — 해안도로·저지대 진입 주의"
+     ]
+    },
+    "evidence": [
+     {
+      "dataset": "[756] 일별 기상 정보",
+      "dataset_id": 756,
+      "as_of": "실시간(Open-Meteo 재분석)",
+      "granularity": "일×관측소",
+      "source": "제주데이터허브 Open API(756) + Open-Meteo ERA5",
+      "synthetic": false,
+      "license": "CC BY 4.0 (Open-Meteo/ERA5)",
+      "used_for": "대상일 강수·강풍·기온"
+     },
+     {
+      "dataset": "[493] 교통사고 다발지역 정보",
+      "dataset_id": 493,
+      "as_of": "2023-12-31",
+      "granularity": "다발지역",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "사고다발지역 반경 내 여부"
+     }
+    ],
+    "method": "후보 상위 N개에 대해 (사고다발지역 중심거리 ≤ 반경+100m AND 사고 ≥7건) OR (야외 AND 강수≥20mm OR 풍속≥14m/s) OR 점검중 이면 위험(severity ≥ 0.6)",
+    "confidence": 0.78,
+    "warnings": [
+     "사고다발지역 자료는 2023-12 기준이며, 이후 도로 구조 변경은 반영되지 않았습니다."
+    ],
+    "next_action": {
+     "type": "re_route_needed",
+     "to_agent": "ev_demand_agent",
+     "exclude_stations": [
+      "JEJU-490034",
+      "JEJU-490033",
+      "JEJU-490032"
+     ],
+     "reason": "여미지식물원: 예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출 / 중문색달해수욕장: 예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출 / 중문관광단지: 예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출; 점검중 상태(가용성 낮음)"
+    },
+    "message_id": "art-196d642419",
+    "hop": 2,
+    "reply_to": "req-de6403a065",
+    "created_at": "2026-11-16T13:18:20.666",
+    "latency_ms": 11,
+    "validation": {
+     "ok": true,
+     "errors": []
+    }
+   }
+  },
+  {
+   "request": {
+    "from_agent": "weather_safety_agent",
+    "to_agent": "ev_demand_agent",
+    "intent": "re_route",
+    "payload": {
+     "region": "중문동",
+     "date": "2026-11-14",
+     "hour": 13,
+     "charger_type": "급속",
+     "top_k": 6,
+     "exclude_stations": [
+      "JEJU-490034",
+      "JEJU-490033",
+      "JEJU-490032"
+     ],
+     "rework_reason": "여미지식물원: 예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출 / 중문색달해수욕장: 예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출 / 중문관광단지: 예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출; 점검중 상태(가용성 낮음)"
+    },
+    "constraints": {},
+    "context": {
+     "trigger": "re_route_needed"
+    },
+    "task_id": "task-849388f7af",
+    "message_id": "req-1bf8d27087",
+    "hop": 3,
+    "reply_to": "art-196d642419",
+    "created_at": "2026-11-16T13:18:20.666"
+   },
+   "artifact": {
+    "from_agent": "ev_demand_agent",
+    "to_agent": "weather_safety_agent",
+    "task_id": "task-849388f7af",
+    "status": "ok",
+    "summary": "중문동 2026-11-14(토) 13시 급속 기준 지역 평균 예상 대기 44.1분, 최적 후보 '중문면세점' 41.6분 (재탐색: 제외 3개소 반영)",
+    "data": {
+     "emd_name": "중문동",
+     "nearby_regions": [],
+     "city_name": "서귀포시",
+     "region_kind": "관광지",
+     "weekday": "토",
+     "date": "2026-11-14",
+     "hour": 13,
+     "charger_type": "급속",
+     "wait_min": 44.1,
+     "wait_base_min": 30.1,
+     "p90_min": 90.39,
+     "growth_factor": 1.25,
+     "tour_factor": 0.94,
+     "weather_factor": 1.25,
+     "pressure": {
+      "ev_per_charger": 27.55,
+      "chargers_now": 119,
+      "ev_2024": 3278,
+      "tourist_load": 18046.3
+     },
+     "candidates": [
+      {
+       "station_id": "JEJU-490035",
+       "station_name": "중문면세점",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "에버온",
+       "parking_type": "실내",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.41,
+       "wait_min": 41.6,
+       "p90_min": 90.4,
+       "risk_score": 57.4,
+       "risk_level": "보통",
+       "c_wait": 0.52,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 41.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+       ]
+      }
+     ],
+     "fallback": [
+      {
+       "station_id": "JEJU-490034",
+       "station_name": "여미지식물원",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 10,
+       "connector_type": "CCS1",
+       "operator": "한국전력공사",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 59.3,
+       "p90_min": 94.4,
+       "risk_score": 69.5,
+       "risk_level": "보통",
+       "c_wait": 0.74,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ],
+       "caution": true
+      },
+      {
+       "station_id": "JEJU-490033",
+       "station_name": "중문색달해수욕장",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 8,
+       "connector_type": "CCS1",
+       "operator": "제주특별자치도",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "09:00-18:00",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 64.0,
+       "p90_min": 104.3,
+       "risk_score": 72.8,
+       "risk_level": "높음",
+       "c_wait": 0.8,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ],
+       "caution": true
+      },
+      {
+       "station_id": "JEJU-490032",
+       "station_name": "중문관광단지",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "테슬라",
+       "parking_type": "야외",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "점검중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 91.6,
+       "p90_min": 86.9,
+       "risk_score": 83.8,
+       "risk_level": "높음",
+       "c_wait": 1.0,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출",
+        "점검중 상태(가용성 낮음)"
+       ],
+       "caution": true
+      }
+     ],
+     "excluded_applied": [
+      "JEJU-490034",
+      "JEJU-490033",
+      "JEJU-490032"
+     ],
+     "avoid_windows": [
+      {
+       "hour": 18,
+       "window": "18:00-19:00",
+       "wait_min": 51.3
+      },
+      {
+       "hour": 14,
+       "window": "14:00-15:00",
+       "wait_min": 50.0
+      },
+      {
+       "hour": 15,
+       "window": "15:00-16:00",
+       "wait_min": 48.9
+      }
+     ],
+     "hourly_curve": [
+      {
+       "hour": 0,
+       "wait_min": 5.71,
+       "p90_min": 13.48
+      },
+      {
+       "hour": 1,
+       "wait_min": 6.59,
+       "p90_min": 13.62
+      },
+      {
+       "hour": 2,
+       "wait_min": 6.89,
+       "p90_min": 14.94
+      },
+      {
+       "hour": 3,
+       "wait_min": 5.42,
+       "p90_min": 12.6
+      },
+      {
+       "hour": 4,
+       "wait_min": 8.64,
+       "p90_min": 17.43
+      },
+      {
+       "hour": 5,
+       "wait_min": 5.86,
+       "p90_min": 12.6
+      },
+      {
+       "hour": 6,
+       "wait_min": 6.45,
+       "p90_min": 14.06
+      },
+      {
+       "hour": 7,
+       "wait_min": 15.82,
+       "p90_min": 32.38
+      },
+      {
+       "hour": 8,
+       "wait_min": 16.55,
+       "p90_min": 34.87
+      },
+      {
+       "hour": 9,
+       "wait_min": 19.63,
+       "p90_min": 47.03
+      },
+      {
+       "hour": 10,
+       "wait_min": 32.82,
+       "p90_min": 68.12
+      },
+      {
+       "hour": 11,
+       "wait_min": 28.71,
+       "p90_min": 69.73
+      },
+      {
+       "hour": 12,
+       "wait_min": 47.91,
+       "p90_min": 99.18
+      },
+      {
+       "hour": 13,
+       "wait_min": 44.1,
+       "p90_min": 90.39
+      },
+      {
+       "hour": 14,
+       "wait_min": 49.96,
+       "p90_min": 100.79
+      },
+      {
+       "hour": 15,
+       "wait_min": 48.93,
+       "p90_min": 118.23
+      },
+      {
+       "hour": 16,
+       "wait_min": 28.57,
+       "p90_min": 66.8
+      },
+      {
+       "hour": 17,
+       "wait_min": 45.56,
+       "p90_min": 94.2
+      },
+      {
+       "hour": 18,
+       "wait_min": 51.27,
+       "p90_min": 115.59
+      },
+      {
+       "hour": 19,
+       "wait_min": 24.03,
+       "p90_min": 56.26
+      },
+      {
+       "hour": 20,
+       "wait_min": 24.32,
+       "p90_min": 58.01
+      },
+      {
+       "hour": 21,
+       "wait_min": 16.85,
+       "p90_min": 39.55
+      },
+      {
+       "hour": 22,
+       "wait_min": 14.21,
+       "p90_min": 31.2
+      },
+      {
+       "hour": 23,
+       "wait_min": 12.75,
+       "p90_min": 30.18
+      }
+     ],
+     "trend_note": "10~16시 구간에서 대기가 감소하는 흐름(32.8분 → 28.6분)",
+     "weather": {
+      "date": "2026-11-14",
+      "region": "서귀포시",
+      "avg_temp": 18.0,
+      "max_temp": 19.2,
+      "min_temp": 17.0,
+      "rainfall_mm": 39.0,
+      "wind_ms": 4.4,
+      "source": "내장 실측 기상(2024-01~현재)",
+      "as_of": "실시간(Open-Meteo 재분석)"
+     }
+    },
+    "evidence": [
+     {
+      "dataset": "[140] 요일별 전기자동차 대기 시간",
+      "dataset_id": 140,
+      "as_of": "2022-10-31",
+      "granularity": "읍면동×요일×시간×충전기유형",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "요일·시간대 대기 패턴(형태)"
+     },
+     {
+      "dataset": "[494] 전기자동차 충전소 정보",
+      "dataset_id": 494,
+      "as_of": "2025-09-18",
+      "granularity": "충전소×충전기유형",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "현재 충전기 수·설치연도·충전소 속성"
+     },
+     {
+      "dataset": "[512] 제주특별자치도 전기자동차 보급 현황",
+      "dataset_id": 512,
+      "as_of": "2024-12-31",
+      "granularity": "연×읍면동×차종",
+      "source": "제주데이터허브 파일데이터",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "읍면동별 EV 등록대수(공급 압력)"
+     },
+     {
+      "dataset": "[745] 관광지별 내·외국인 유입자 수",
+      "dataset_id": 745,
+      "as_of": "2024-12-31",
+      "granularity": "월×관광지",
+      "source": "제주데이터허브 Open API(745·746)",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "월별 관광 유입(계절 계수)"
+     },
+     {
+      "dataset": "[136] 일별 전기자동차 충전 이력",
+      "dataset_id": 136,
+      "as_of": "2022-06-30",
+      "granularity": "일×읍면동×충전기유형",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "과거 충전 수요 추세(교차 확인)"
+     }
+    ],
+    "method": "예상대기 = 과거(2022) 요일×시간 대기 패턴 × (현재 EV/충전기 ÷ 2022 EV/충전기) × 월별 관광 계절계수 × 기상 보정계수. 리스크 = 0.55·대기 + 0.20·공급압력 + 0.15·관광부하 + 0.10·안전",
+    "confidence": 0.74,
+    "warnings": [
+     "대기 패턴 기준일 2022-10-31 → 대상일 2026-11-14 (약 4.0년 차, 수준은 최신 EV·충전기로 보정)",
+     "weather_safety_agent 재탐색 요청 반영: 여미지식물원: 예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출 / 중문색달해수욕장: 예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출 / 중문관광단지: 예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25); 야외 충전기 · 강수/강풍 노출; 점검중 상태(가용성 낮음)"
+    ],
+    "next_action": {
+     "type": "handoff",
+     "to_agent": "weather_safety_agent",
+     "reason": "후보 충전소의 기상·사고다발지역 안전성 교차 검증"
+    },
+    "message_id": "art-0fe43aeff1",
+    "hop": 3,
+    "reply_to": "req-1bf8d27087",
+    "created_at": "2026-11-16T13:18:20.848",
+    "latency_ms": 181,
+    "validation": {
+     "ok": true,
+     "errors": []
+    }
+   }
+  },
+  {
+   "request": {
+    "from_agent": "orchestrator",
+    "to_agent": "weather_safety_agent",
+    "intent": "safety_weather_check",
+    "payload": {
+     "region": "중문동",
+     "date": "2026-11-14",
+     "hour": 13,
+     "candidates": [
+      {
+       "station_id": "JEJU-490035",
+       "station_name": "중문면세점",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "에버온",
+       "parking_type": "실내",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.41,
+       "wait_min": 41.6,
+       "p90_min": 90.4,
+       "risk_score": 57.4,
+       "risk_level": "보통",
+       "c_wait": 0.52,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 41.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+       ]
+      }
+     ],
+     "check_top_n": 5
+    },
+    "constraints": {},
+    "context": {
+     "task": "task-849388f7af",
+     "attempt": 1
+    },
+    "task_id": "task-160425cda6",
+    "message_id": "req-8f9c51aaae",
+    "hop": 4,
+    "reply_to": null,
+    "created_at": "2026-11-16T13:18:20.848"
+   },
+   "artifact": {
+    "from_agent": "weather_safety_agent",
+    "to_agent": "orchestrator",
+    "task_id": "task-160425cda6",
+    "status": "ok",
+    "summary": "2026-11-14 서귀포시 기상: 강수 39.0mm·최대풍속 4.4m/s·평균 18.0°C → 후보 5곳 중 위험 0곳, 판정 '통과'",
+    "data": {
+     "verdict": "통과",
+     "checked": 5,
+     "flagged_count": 0,
+     "flagged": [],
+     "flags": [
+      {
+       "station_id": "JEJU-490035",
+       "station_name": "중문면세점",
+       "severity": 0.0,
+       "flagged": false,
+       "reasons": [
+        "예상 대기 41.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+       ]
+      }
+     ],
+     "weather": {
+      "date": "2026-11-14",
+      "region": "서귀포시",
+      "avg_temp": 18.0,
+      "max_temp": 19.2,
+      "min_temp": 17.0,
+      "rainfall_mm": 39.0,
+      "wind_ms": 4.4,
+      "source": "내장 실측 기상(2024-01~현재)",
+      "as_of": "실시간(Open-Meteo 재분석)"
+     },
+     "alerts": [
+      "호우 경보 수준(39.0mm) — 해안도로·저지대 진입 주의"
+     ]
+    },
+    "evidence": [
+     {
+      "dataset": "[756] 일별 기상 정보",
+      "dataset_id": 756,
+      "as_of": "실시간(Open-Meteo 재분석)",
+      "granularity": "일×관측소",
+      "source": "제주데이터허브 Open API(756) + Open-Meteo ERA5",
+      "synthetic": false,
+      "license": "CC BY 4.0 (Open-Meteo/ERA5)",
+      "used_for": "대상일 강수·강풍·기온"
+     },
+     {
+      "dataset": "[493] 교통사고 다발지역 정보",
+      "dataset_id": 493,
+      "as_of": "2023-12-31",
+      "granularity": "다발지역",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "사고다발지역 반경 내 여부"
+     }
+    ],
+    "method": "후보 상위 N개에 대해 (사고다발지역 중심거리 ≤ 반경+100m AND 사고 ≥7건) OR (야외 AND 강수≥20mm OR 풍속≥14m/s) OR 점검중 이면 위험(severity ≥ 0.6)",
+    "confidence": 0.82,
+    "warnings": [
+     "사고다발지역 자료는 2023-12 기준이며, 이후 도로 구조 변경은 반영되지 않았습니다."
+    ],
+    "next_action": {
+     "type": "handoff",
+     "to_agent": "concierge_report_agent",
+     "reason": "후보 충전소 안전·기상 검증 통과"
+    },
+    "message_id": "art-090b26fef5",
+    "hop": 4,
+    "reply_to": "req-8f9c51aaae",
+    "created_at": "2026-11-16T13:18:20.856",
+    "latency_ms": 7,
+    "validation": {
+     "ok": true,
+     "errors": []
+    }
+   }
+  },
+  {
+   "request": {
+    "from_agent": "orchestrator",
+    "to_agent": "concierge_report_agent",
+    "intent": "compose_report",
+    "payload": {
+     "region": "중문동",
+     "date": "2026-11-14",
+     "hour": 13,
+     "charger_type": "급속",
+     "demand": {
+      "emd_name": "중문동",
+      "nearby_regions": [],
+      "city_name": "서귀포시",
+      "region_kind": "관광지",
+      "weekday": "토",
+      "date": "2026-11-14",
+      "hour": 13,
+      "charger_type": "급속",
+      "wait_min": 44.1,
+      "wait_base_min": 30.1,
+      "p90_min": 90.39,
+      "growth_factor": 1.25,
+      "tour_factor": 0.94,
+      "weather_factor": 1.25,
+      "pressure": {
+       "ev_per_charger": 27.55,
+       "chargers_now": 119,
+       "ev_2024": 3278,
+       "tourist_load": 18046.3
+      },
+      "candidates": [
+       {
+        "station_id": "JEJU-490035",
+        "station_name": "중문면세점",
+        "emd_name": "중문동",
+        "city_name": "서귀포시",
+        "charger_type": "급속",
+        "charger_count": 12,
+        "connector_type": "CCS1",
+        "operator": "에버온",
+        "parking_type": "실내",
+        "parking_fee": "유료",
+        "open_hours": "24시간",
+        "status": "운영중",
+        "latitude": 33.25,
+        "longitude": 126.41,
+        "wait_min": 41.6,
+        "p90_min": 90.4,
+        "risk_score": 57.4,
+        "risk_level": "보통",
+        "c_wait": 0.52,
+        "c_supply": 0.69,
+        "c_tour": 1.0,
+        "c_safety": 0.0,
+        "reasons": [
+         "예상 대기 41.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+        ]
+       }
+      ],
+      "fallback": [
+       {
+        "station_id": "JEJU-490034",
+        "station_name": "여미지식물원",
+        "emd_name": "중문동",
+        "city_name": "서귀포시",
+        "charger_type": "급속",
+        "charger_count": 10,
+        "connector_type": "CCS1",
+        "operator": "한국전력공사",
+        "parking_type": "야외",
+        "parking_fee": "무료",
+        "open_hours": "24시간",
+        "status": "운영중",
+        "latitude": 33.25,
+        "longitude": 126.42,
+        "wait_min": 59.3,
+        "p90_min": 94.4,
+        "risk_score": 69.5,
+        "risk_level": "보통",
+        "c_wait": 0.74,
+        "c_supply": 0.69,
+        "c_tour": 1.0,
+        "c_safety": 0.0,
+        "reasons": [
+         "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+         "야외 충전기 · 강수/강풍 노출"
+        ],
+        "caution": true
+       },
+       {
+        "station_id": "JEJU-490033",
+        "station_name": "중문색달해수욕장",
+        "emd_name": "중문동",
+        "city_name": "서귀포시",
+        "charger_type": "급속",
+        "charger_count": 8,
+        "connector_type": "CCS1",
+        "operator": "제주특별자치도",
+        "parking_type": "야외",
+        "parking_fee": "무료",
+        "open_hours": "09:00-18:00",
+        "status": "운영중",
+        "latitude": 33.25,
+        "longitude": 126.42,
+        "wait_min": 64.0,
+        "p90_min": 104.3,
+        "risk_score": 72.8,
+        "risk_level": "높음",
+        "c_wait": 0.8,
+        "c_supply": 0.69,
+        "c_tour": 1.0,
+        "c_safety": 0.0,
+        "reasons": [
+         "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+         "야외 충전기 · 강수/강풍 노출"
+        ],
+        "caution": true
+       },
+       {
+        "station_id": "JEJU-490032",
+        "station_name": "중문관광단지",
+        "emd_name": "중문동",
+        "city_name": "서귀포시",
+        "charger_type": "급속",
+        "charger_count": 12,
+        "connector_type": "CCS1",
+        "operator": "테슬라",
+        "parking_type": "야외",
+        "parking_fee": "유료",
+        "open_hours": "24시간",
+        "status": "점검중",
+        "latitude": 33.25,
+        "longitude": 126.42,
+        "wait_min": 91.6,
+        "p90_min": 86.9,
+        "risk_score": 83.8,
+        "risk_level": "높음",
+        "c_wait": 1.0,
+        "c_supply": 0.69,
+        "c_tour": 1.0,
+        "c_safety": 0.0,
+        "reasons": [
+         "예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+         "야외 충전기 · 강수/강풍 노출",
+         "점검중 상태(가용성 낮음)"
+        ],
+        "caution": true
+       }
+      ],
+      "excluded_applied": [
+       "JEJU-490034",
+       "JEJU-490033",
+       "JEJU-490032"
+      ],
+      "avoid_windows": [
+       {
+        "hour": 18,
+        "window": "18:00-19:00",
+        "wait_min": 51.3
+       },
+       {
+        "hour": 14,
+        "window": "14:00-15:00",
+        "wait_min": 50.0
+       },
+       {
+        "hour": 15,
+        "window": "15:00-16:00",
+        "wait_min": 48.9
+       }
+      ],
+      "hourly_curve": [
+       {
+        "hour": 0,
+        "wait_min": 5.71,
+        "p90_min": 13.48
+       },
+       {
+        "hour": 1,
+        "wait_min": 6.59,
+        "p90_min": 13.62
+       },
+       {
+        "hour": 2,
+        "wait_min": 6.89,
+        "p90_min": 14.94
+       },
+       {
+        "hour": 3,
+        "wait_min": 5.42,
+        "p90_min": 12.6
+       },
+       {
+        "hour": 4,
+        "wait_min": 8.64,
+        "p90_min": 17.43
+       },
+       {
+        "hour": 5,
+        "wait_min": 5.86,
+        "p90_min": 12.6
+       },
+       {
+        "hour": 6,
+        "wait_min": 6.45,
+        "p90_min": 14.06
+       },
+       {
+        "hour": 7,
+        "wait_min": 15.82,
+        "p90_min": 32.38
+       },
+       {
+        "hour": 8,
+        "wait_min": 16.55,
+        "p90_min": 34.87
+       },
+       {
+        "hour": 9,
+        "wait_min": 19.63,
+        "p90_min": 47.03
+       },
+       {
+        "hour": 10,
+        "wait_min": 32.82,
+        "p90_min": 68.12
+       },
+       {
+        "hour": 11,
+        "wait_min": 28.71,
+        "p90_min": 69.73
+       },
+       {
+        "hour": 12,
+        "wait_min": 47.91,
+        "p90_min": 99.18
+       },
+       {
+        "hour": 13,
+        "wait_min": 44.1,
+        "p90_min": 90.39
+       },
+       {
+        "hour": 14,
+        "wait_min": 49.96,
+        "p90_min": 100.79
+       },
+       {
+        "hour": 15,
+        "wait_min": 48.93,
+        "p90_min": 118.23
+       },
+       {
+        "hour": 16,
+        "wait_min": 28.57,
+        "p90_min": 66.8
+       },
+       {
+        "hour": 17,
+        "wait_min": 45.56,
+        "p90_min": 94.2
+       },
+       {
+        "hour": 18,
+        "wait_min": 51.27,
+        "p90_min": 115.59
+       },
+       {
+        "hour": 19,
+        "wait_min": 24.03,
+        "p90_min": 56.26
+       },
+       {
+        "hour": 20,
+        "wait_min": 24.32,
+        "p90_min": 58.01
+       },
+       {
+        "hour": 21,
+        "wait_min": 16.85,
+        "p90_min": 39.55
+       },
+       {
+        "hour": 22,
+        "wait_min": 14.21,
+        "p90_min": 31.2
+       },
+       {
+        "hour": 23,
+        "wait_min": 12.75,
+        "p90_min": 30.18
+       }
+      ],
+      "trend_note": "10~16시 구간에서 대기가 감소하는 흐름(32.8분 → 28.6분)",
+      "weather": {
+       "date": "2026-11-14",
+       "region": "서귀포시",
+       "avg_temp": 18.0,
+       "max_temp": 19.2,
+       "min_temp": 17.0,
+       "rainfall_mm": 39.0,
+       "wind_ms": 4.4,
+       "source": "내장 실측 기상(2024-01~현재)",
+       "as_of": "실시간(Open-Meteo 재분석)"
+      }
+     },
+     "safety": {
+      "verdict": "통과",
+      "checked": 5,
+      "flagged_count": 0,
+      "flagged": [],
+      "flags": [
+       {
+        "station_id": "JEJU-490035",
+        "station_name": "중문면세점",
+        "severity": 0.0,
+        "flagged": false,
+        "reasons": [
+         "예상 대기 41.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+        ]
+       }
+      ],
+      "weather": {
+       "date": "2026-11-14",
+       "region": "서귀포시",
+       "avg_temp": 18.0,
+       "max_temp": 19.2,
+       "min_temp": 17.0,
+       "rainfall_mm": 39.0,
+       "wind_ms": 4.4,
+       "source": "내장 실측 기상(2024-01~현재)",
+       "as_of": "실시간(Open-Meteo 재분석)"
+      },
+      "alerts": [
+       "호우 경보 수준(39.0mm) — 해안도로·저지대 진입 주의"
+      ]
+     },
+     "previous_candidates": [
+      {
+       "station_id": "JEJU-490035",
+       "station_name": "중문면세점",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "에버온",
+       "parking_type": "실내",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.41,
+       "wait_min": 40.0,
+       "p90_min": 86.9,
+       "risk_score": 56.3,
+       "risk_level": "보통",
+       "c_wait": 0.5,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 40.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+       ]
+      },
+      {
+       "station_id": "JEJU-490034",
+       "station_name": "여미지식물원",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 10,
+       "connector_type": "CCS1",
+       "operator": "한국전력공사",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "24시간",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 59.3,
+       "p90_min": 94.4,
+       "risk_score": 69.5,
+       "risk_level": "보통",
+       "c_wait": 0.74,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490033",
+       "station_name": "중문색달해수욕장",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 8,
+       "connector_type": "CCS1",
+       "operator": "제주특별자치도",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "09:00-18:00",
+       "status": "운영중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 64.0,
+       "p90_min": 104.3,
+       "risk_score": 72.8,
+       "risk_level": "높음",
+       "c_wait": 0.8,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490032",
+       "station_name": "중문관광단지",
+       "emd_name": "중문동",
+       "city_name": "서귀포시",
+       "charger_type": "급속",
+       "charger_count": 12,
+       "connector_type": "CCS1",
+       "operator": "테슬라",
+       "parking_type": "야외",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "status": "점검중",
+       "latitude": 33.25,
+       "longitude": 126.42,
+       "wait_min": 91.6,
+       "p90_min": 86.9,
+       "risk_score": 83.8,
+       "risk_level": "높음",
+       "c_wait": 1.0,
+       "c_supply": 0.69,
+       "c_tour": 1.0,
+       "c_safety": 0.0,
+       "reasons": [
+        "예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출",
+        "점검중 상태(가용성 낮음)"
+       ]
+      }
+     ],
+     "user_query": "비 오는 주말에 서귀포 중문에서 안전하게 충전할 곳 찾아줘",
+     "a2a_markdown": "| 홉 | 시각 | 보낸 곳 → 받은 곳 | 의도 | 검증 | 상태 | 지연(ms) | 요약 |\n|---:|---|---|---|---|---|---:|---|\n| 1 | 13:18:20.654 | orchestrator → ev_demand_agent | charging_wait_risk | 통과 | ok | 170 | 중문동 2026-11-14(토) 13시 급속 기준 지역 평균 예상 대기 44.1분, 최적 후보 '중문면세점' |\n| 2 | 13:18:20.666 | orchestrator → weather_safety_agent | safety_weather_check | 통과 | rework_request | 11 | 2026-11-14 서귀포시 기상: 강수 39.0mm·최대풍속 4.4m/s·평균 18.0°C → 후보 5곳  |\n| 3 | 13:18:20.848 | weather_safety_agent → ev_demand_agent | re_route | 통과 | ok | 181 | 중문동 2026-11-14(토) 13시 급속 기준 지역 평균 예상 대기 44.1분, 최적 후보 '중문면세점' |\n| 4 | 13:18:20.856 | orchestrator → weather_safety_agent | safety_weather_check | 통과 | ok | 7 | 2026-11-14 서귀포시 기상: 강수 39.0mm·최대풍속 4.4m/s·평균 18.0°C → 후보 5곳  |",
+     "engine": "zerokey",
+     "confidence": 0.74,
+     "out_dir": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h",
+     "rerouted": true,
+     "excluded_total": 3,
+     "excluded_records": [
+      {
+       "station_id": "JEJU-490034",
+       "station_name": "여미지식물원",
+       "severity": 0.75,
+       "reasons": [
+        "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490033",
+       "station_name": "중문색달해수욕장",
+       "severity": 0.75,
+       "reasons": [
+        "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ]
+      },
+      {
+       "station_id": "JEJU-490032",
+       "station_name": "중문관광단지",
+       "severity": 0.75,
+       "reasons": [
+        "예상 대기 91.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출",
+        "점검중 상태(가용성 낮음)"
+       ]
+      }
+     ]
+    },
+    "constraints": {},
+    "context": {
+     "demand_task": "task-849388f7af",
+     "safety_task": "task-160425cda6"
+    },
+    "task_id": "task-5833981f23",
+    "message_id": "req-bcd74f5f36",
+    "hop": 5,
+    "reply_to": null,
+    "created_at": "2026-11-16T13:18:20.856"
+   },
+   "artifact": {
+    "from_agent": "concierge_report_agent",
+    "to_agent": "orchestrator",
+    "task_id": "task-5833981f23",
+    "status": "ok",
+    "summary": "2026-11-14(토) 13시 중문동 기준, 가장 유리한 곳은 '중문면세점'(예상 대기 41.6분, 리스크 57/100)입니다.",
+    "data": {
+     "top3": [
+      {
+       "station_name": "중문면세점",
+       "emd_name": "중문동",
+       "charger_count": 12,
+       "wait_min": 41.6,
+       "p90_min": 90.4,
+       "risk_score": 57.4,
+       "risk_level": "보통",
+       "parking_type": "실내",
+       "parking_fee": "유료",
+       "open_hours": "24시간",
+       "operator": "에버온",
+       "reasons": [
+        "예상 대기 41.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+       ],
+       "caution": false
+      },
+      {
+       "station_name": "여미지식물원",
+       "emd_name": "중문동",
+       "charger_count": 10,
+       "wait_min": 59.3,
+       "p90_min": 94.4,
+       "risk_score": 69.5,
+       "risk_level": "보통",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "24시간",
+       "operator": "한국전력공사",
+       "reasons": [
+        "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ],
+       "caution": true
+      },
+      {
+       "station_name": "중문색달해수욕장",
+       "emd_name": "중문동",
+       "charger_count": 8,
+       "wait_min": 64.0,
+       "p90_min": 104.3,
+       "risk_score": 72.8,
+       "risk_level": "높음",
+       "parking_type": "야외",
+       "parking_fee": "무료",
+       "open_hours": "09:00-18:00",
+       "operator": "제주특별자치도",
+       "reasons": [
+        "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+        "야외 충전기 · 강수/강풍 노출"
+       ],
+       "caution": true
+      }
+     ],
+     "summary_lines": [
+      "2026-11-14(토) 13시 중문동 기준, 가장 유리한 곳은 '중문면세점'(예상 대기 41.6분, 리스크 57/100)입니다.",
+      "같은 시각 중문동 평균 예상 대기는 44.1분이며, 상위 10%는 90.4분까지 늘어납니다.",
+      "피해야 할 시간대는 18:00-19:00(51분), 14:00-15:00(50분), 15:00-16:00(49분) 입니다.",
+      "기상·안전 검증에서 위험 충전소 3곳을 후보에서 제외하고 재탐색했습니다. 아래 추천은 재탐색 이후 결과입니다.",
+      "안전 기준을 통과한 후보가 1곳뿐이라, 부득이한 대안은 '주의' 표시와 함께 제시합니다."
+     ],
+     "avoid_windows": [
+      {
+       "hour": 18,
+       "window": "18:00-19:00",
+       "wait_min": 51.3
+      },
+      {
+       "hour": 14,
+       "window": "14:00-15:00",
+       "wait_min": 50.0
+      },
+      {
+       "hour": 15,
+       "window": "15:00-16:00",
+       "wait_min": 48.9
+      }
+     ],
+     "alerts": [
+      "호우 경보 수준(39.0mm) — 해안도로·저지대 진입 주의"
+     ],
+     "weather": {
+      "date": "2026-11-14",
+      "region": "서귀포시",
+      "avg_temp": 18.0,
+      "max_temp": 19.2,
+      "min_temp": 17.0,
+      "rainfall_mm": 39.0,
+      "wind_ms": 4.4,
+      "source": "내장 실측 기상(2024-01~현재)",
+      "as_of": "실시간(Open-Meteo 재분석)"
+     },
+     "rerouted": true,
+     "charts": {
+      "heatmap": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/01_risk_heatmap.png",
+      "ranking": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/02_station_ranking.png",
+      "curve": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/03_hourly_curve.png",
+      "weather": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/04_weather_context.png",
+      "reroute": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/05_reroute_compare.png",
+      "supply": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/06_supply_demand.png"
+     },
+     "report_md": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/report.md",
+     "report_pdf": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/report.pdf",
+     "out_dir": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h"
+    },
+    "evidence": [
+     {
+      "dataset": "[140] 요일별 전기자동차 대기 시간",
+      "dataset_id": 140,
+      "as_of": "2022-10-31",
+      "granularity": "읍면동×요일×시간×충전기유형",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "요일·시간대 대기 패턴"
+     },
+     {
+      "dataset": "[494] 전기자동차 충전소 정보",
+      "dataset_id": 494,
+      "as_of": "2025-09-18",
+      "granularity": "충전소×충전기유형",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "충전소·충전기 현황"
+     },
+     {
+      "dataset": "[512] 제주특별자치도 전기자동차 보급 현황",
+      "dataset_id": 512,
+      "as_of": "2024-12-31",
+      "granularity": "연×읍면동×차종",
+      "source": "제주데이터허브 파일데이터",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "EV 등록대수(공급 압력)"
+     },
+     {
+      "dataset": "[745] 관광지별 내·외국인 유입자 수",
+      "dataset_id": 745,
+      "as_of": "2024-12-31",
+      "granularity": "월×관광지",
+      "source": "제주데이터허브 Open API(745·746)",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "관광 유입(계절 계수)"
+     },
+     {
+      "dataset": "[756] 일별 기상 정보",
+      "dataset_id": 756,
+      "as_of": "실시간(Open-Meteo 재분석)",
+      "granularity": "일×관측소",
+      "source": "제주데이터허브 Open API(756) + Open-Meteo ERA5",
+      "synthetic": false,
+      "license": "CC BY 4.0 (Open-Meteo/ERA5)",
+      "used_for": "대상일 기상"
+     },
+     {
+      "dataset": "[493] 교통사고 다발지역 정보",
+      "dataset_id": 493,
+      "as_of": "2023-12-31",
+      "granularity": "다발지역",
+      "source": "제주데이터허브 Open API",
+      "synthetic": true,
+      "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+      "used_for": "사고다발지역 안전 검증"
+     }
+    ],
+    "method": "추천=예상대기 최소 3곳 + 리스크 등급 표기, 회피시간=대기 상위 3시간, 주의사항=기상·사고다발 검증 결과",
+    "confidence": 0.74,
+    "warnings": [],
+    "next_action": {
+     "type": "final",
+     "to_agent": "user"
+    },
+    "message_id": "art-ac58b152ba",
+    "hop": 5,
+    "reply_to": "req-bcd74f5f36",
+    "created_at": "2026-11-16T13:18:22.643",
+    "latency_ms": 1786,
+    "validation": {
+     "ok": true,
+     "errors": []
+    }
+   }
+  }
+ ],
+ "log": [],
+ "final": {
+  "from_agent": "concierge_report_agent",
+  "to_agent": "orchestrator",
+  "task_id": "task-5833981f23",
+  "status": "ok",
+  "summary": "2026-11-14(토) 13시 중문동 기준, 가장 유리한 곳은 '중문면세점'(예상 대기 41.6분, 리스크 57/100)입니다.",
+  "data": {
+   "top3": [
+    {
+     "station_name": "중문면세점",
+     "emd_name": "중문동",
+     "charger_count": 12,
+     "wait_min": 41.6,
+     "p90_min": 90.4,
+     "risk_score": 57.4,
+     "risk_level": "보통",
+     "parking_type": "실내",
+     "parking_fee": "유료",
+     "open_hours": "24시간",
+     "operator": "에버온",
+     "reasons": [
+      "예상 대기 41.6분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)"
+     ],
+     "caution": false
+    },
+    {
+     "station_name": "여미지식물원",
+     "emd_name": "중문동",
+     "charger_count": 10,
+     "wait_min": 59.3,
+     "p90_min": 94.4,
+     "risk_score": 69.5,
+     "risk_level": "보통",
+     "parking_type": "야외",
+     "parking_fee": "무료",
+     "open_hours": "24시간",
+     "operator": "한국전력공사",
+     "reasons": [
+      "예상 대기 59.3분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+      "야외 충전기 · 강수/강풍 노출"
+     ],
+     "caution": true
+    },
+    {
+     "station_name": "중문색달해수욕장",
+     "emd_name": "중문동",
+     "charger_count": 8,
+     "wait_min": 64.0,
+     "p90_min": 104.3,
+     "risk_score": 72.8,
+     "risk_level": "높음",
+     "parking_type": "야외",
+     "parking_fee": "무료",
+     "open_hours": "09:00-18:00",
+     "operator": "제주특별자치도",
+     "reasons": [
+      "예상 대기 64.0분(과거 패턴 30.1분 × 공급계수 1.25 × 기상 1.25)",
+      "야외 충전기 · 강수/강풍 노출"
+     ],
+     "caution": true
+    }
+   ],
+   "summary_lines": [
+    "2026-11-14(토) 13시 중문동 기준, 가장 유리한 곳은 '중문면세점'(예상 대기 41.6분, 리스크 57/100)입니다.",
+    "같은 시각 중문동 평균 예상 대기는 44.1분이며, 상위 10%는 90.4분까지 늘어납니다.",
+    "피해야 할 시간대는 18:00-19:00(51분), 14:00-15:00(50분), 15:00-16:00(49분) 입니다.",
+    "기상·안전 검증에서 위험 충전소 3곳을 후보에서 제외하고 재탐색했습니다. 아래 추천은 재탐색 이후 결과입니다.",
+    "안전 기준을 통과한 후보가 1곳뿐이라, 부득이한 대안은 '주의' 표시와 함께 제시합니다."
+   ],
+   "avoid_windows": [
+    {
+     "hour": 18,
+     "window": "18:00-19:00",
+     "wait_min": 51.3
+    },
+    {
+     "hour": 14,
+     "window": "14:00-15:00",
+     "wait_min": 50.0
+    },
+    {
+     "hour": 15,
+     "window": "15:00-16:00",
+     "wait_min": 48.9
+    }
+   ],
+   "alerts": [
+    "호우 경보 수준(39.0mm) — 해안도로·저지대 진입 주의"
+   ],
+   "weather": {
+    "date": "2026-11-14",
+    "region": "서귀포시",
+    "avg_temp": 18.0,
+    "max_temp": 19.2,
+    "min_temp": 17.0,
+    "rainfall_mm": 39.0,
+    "wind_ms": 4.4,
+    "source": "내장 실측 기상(2024-01~현재)",
+    "as_of": "실시간(Open-Meteo 재분석)"
+   },
+   "rerouted": true,
+   "charts": {
+    "heatmap": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/01_risk_heatmap.png",
+    "ranking": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/02_station_ranking.png",
+    "curve": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/03_hourly_curve.png",
+    "weather": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/04_weather_context.png",
+    "reroute": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/05_reroute_compare.png",
+    "supply": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/06_supply_demand.png"
+   },
+   "report_md": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/report.md",
+   "report_pdf": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/report.pdf",
+   "out_dir": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h"
+  },
+  "evidence": [
+   {
+    "dataset": "[140] 요일별 전기자동차 대기 시간",
+    "dataset_id": 140,
+    "as_of": "2022-10-31",
+    "granularity": "읍면동×요일×시간×충전기유형",
+    "source": "제주데이터허브 Open API",
+    "synthetic": true,
+    "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+    "used_for": "요일·시간대 대기 패턴"
+   },
+   {
+    "dataset": "[494] 전기자동차 충전소 정보",
+    "dataset_id": 494,
+    "as_of": "2025-09-18",
+    "granularity": "충전소×충전기유형",
+    "source": "제주데이터허브 Open API",
+    "synthetic": true,
+    "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+    "used_for": "충전소·충전기 현황"
+   },
+   {
+    "dataset": "[512] 제주특별자치도 전기자동차 보급 현황",
+    "dataset_id": 512,
+    "as_of": "2024-12-31",
+    "granularity": "연×읍면동×차종",
+    "source": "제주데이터허브 파일데이터",
+    "synthetic": true,
+    "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+    "used_for": "EV 등록대수(공급 압력)"
+   },
+   {
+    "dataset": "[745] 관광지별 내·외국인 유입자 수",
+    "dataset_id": 745,
+    "as_of": "2024-12-31",
+    "granularity": "월×관광지",
+    "source": "제주데이터허브 Open API(745·746)",
+    "synthetic": true,
+    "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+    "used_for": "관광 유입(계절 계수)"
+   },
+   {
+    "dataset": "[756] 일별 기상 정보",
+    "dataset_id": 756,
+    "as_of": "실시간(Open-Meteo 재분석)",
+    "granularity": "일×관측소",
+    "source": "제주데이터허브 Open API(756) + Open-Meteo ERA5",
+    "synthetic": false,
+    "license": "CC BY 4.0 (Open-Meteo/ERA5)",
+    "used_for": "대상일 기상"
+   },
+   {
+    "dataset": "[493] 교통사고 다발지역 정보",
+    "dataset_id": 493,
+    "as_of": "2023-12-31",
+    "granularity": "다발지역",
+    "source": "제주데이터허브 Open API",
+    "synthetic": true,
+    "license": "합성 검증 데이터(제주데이터허브 Open API 정규화 스키마 기반)",
+    "used_for": "사고다발지역 안전 검증"
+   }
+  ],
+  "method": "추천=예상대기 최소 3곳 + 리스크 등급 표기, 회피시간=대기 상위 3시간, 주의사항=기상·사고다발 검증 결과",
+  "confidence": 0.74,
+  "warnings": [],
+  "next_action": {
+   "type": "final",
+   "to_agent": "user"
+  },
+  "message_id": "art-ac58b152ba",
+  "hop": 5,
+  "reply_to": "req-bcd74f5f36",
+  "created_at": "2026-11-16T13:18:22.643",
+  "latency_ms": 1786,
+  "validation": {
+   "ok": true,
+   "errors": []
+  }
+ },
+ "report_md": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/report.md",
+ "report_pdf": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/report.pdf",
+ "charts": {
+  "heatmap": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/01_risk_heatmap.png",
+  "ranking": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/02_station_ranking.png",
+  "curve": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/03_hourly_curve.png",
+  "weather": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/04_weather_context.png",
+  "reroute": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/05_reroute_compare.png",
+  "supply": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h/charts/06_supply_demand.png"
+ },
+ "out_dir": "/workspace/documents/jeju-ai-2026/JejuEV_Guardian/outputs/run_20261116_131820_중문동_13h",
+ "warnings": []
+}
